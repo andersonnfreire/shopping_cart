@@ -22,6 +22,7 @@ Homestead.json
 .phpunit.result.cache
 
 ### NetBeans ###
+nbproject/
 nbproject/private/
 nbproject/Makefile-*.mk
 nbproject/Package-*.bash
