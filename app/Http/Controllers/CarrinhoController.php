@@ -23,4 +23,47 @@ class CarrinhoController extends Controller
 
         return view('carrinho.index', compact('pedidos'));
     }
+    public function adicionar()
+    {
+
+        $this->middleware('VerifyCsrfToken');
+
+        $req = Request();
+        $idproduto = $req->input('id');
+
+        $produto = Produto::find($idproduto);
+        if( empty($produto->id) ) {
+            $req->session()->flash('mensagem-falha', 'Produto não encontrado em nossa loja!');
+            return redirect()->route('carrinho.index');
+        }
+
+        $idusuario = Auth::id();
+
+        $idpedido = Pedido::consultaId([
+            'user_id' => $idusuario,
+            'status'  => 'RE' // Reservada
+            ]);
+
+        if( empty($idpedido) ) {
+            $pedido_novo = Pedido::create([
+                'user_id' => $idusuario,
+                'status'  => 'RE'
+                ]);
+
+            $idpedido = $pedido_novo->id;
+
+        }
+
+        PedidoProduto::create([
+            'pedido_id'  => $idpedido,
+            'produto_id' => $idproduto,
+            'valor'      => $produto->valor,
+            'status'     => 'RE'
+            ]);
+
+        $req->session()->flash('mensagem-sucesso', 'Produto adicionado ao carrinho com sucesso!');
+
+        return redirect()->route('carrinho.index');
+
+    }
 }
