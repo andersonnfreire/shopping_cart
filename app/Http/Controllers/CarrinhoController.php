@@ -308,8 +308,8 @@ class CarrinhoController extends Controller
                             'cupom_desconto_id' => $cupom->id
                         ])->count();
 
-                    if( $qtd_pedido >= $cupom->limite ) {
-                        continue;
+                    if($qtd_pedido >= $cupom->limite ) {
+                        
                     }
                     break;
 
@@ -319,7 +319,7 @@ class CarrinhoController extends Controller
                         ])->sum('desconto');
 
                     if( ($valor_ckc_descontos+$valor_desconto) > $cupom->limite ) {
-                        continue;
+                        //continue;
                     }
                     break;
             }

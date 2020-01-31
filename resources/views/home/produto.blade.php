@@ -9,7 +9,7 @@
         <div class="divider"></div>
         <div class="section col s12 m6 l4">
             <div class="card small">
-                <img class="col s12 m12 l12 materialboxed" data-caption="{{ $registro->nome }}" src="{{ $registro->imagem }}" alt="{{ $registro->nome }}" title="{{ $registro->nome }}">
+                <img class="col s12 m12 l12 materialboxed" data-caption="{{ $registro->nome }}" src="{{url("/images/$registro->imagem")}}" alt="Image" title="{{ $registro->nome }}">
             </div>
         </div>
         <div class="section col s12 m6 l6">

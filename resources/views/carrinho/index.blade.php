@@ -39,7 +39,10 @@
 
                     <tr>
                         <td>
-                            <img width="100" height="100" src="{{ $pedido_produto->produto->imagem }}">
+                            @php 
+                            $nomeImagem = $pedido_produto->produto->imagem;
+                            @endphp
+                            <img width="100" height="100" src="{{ url("/images/$nomeImagem")}}">
                         </td>
                         <td class="center-align">
                             <div class="center-align">

@@ -52,7 +52,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <img width="100" height="100" src="{{ $pedido_produto->produto->imagem }}">
+                                    @php 
+                                    $nomeImagem = $pedido_produto->produto->imagem;
+                                    @endphp 
+                                    <img width="100" height="100" src="{{ url("/images/$nomeImagem")}}">
                                 </td>
                                 <td>{{ $pedido_produto->produto->nome }}</td>
                                 <td>R$ {{ number_format($pedido_produto->valor, 2, ',', '.') }}</td>
@@ -115,8 +118,11 @@
                                 $total_pedido += $total_produto;
                             @endphp
                         <tr>
+                            @php 
+                                    $nomeImagem = $pedido_produto->produto->imagem;
+                                    @endphp 
                             <td>
-                                <img width="100" height="100" src="{{ $pedido_produto->produto->imagem }}">
+                                <img width="100" height="100" src="{{ url("/images/$nomeImagem")}}">
                             </td>
                             <td>{{ $pedido_produto->produto->nome }}</td>
                             <td>R$ {{ number_format($pedido_produto->valor, 2, ',', '.') }}</td>

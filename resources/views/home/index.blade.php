@@ -9,7 +9,7 @@
 		<div class="col s12 m6 l4">
 			<div class="card medium">
 				<div class="card-image">
-					<img src="{{ $registro->imagem }}">
+					<img src="{{url("/images/$registro->imagem")}}">
 				</div>
 				<div class="card-content">
 					<span class="card-title grey-text text-darken-4 truncate" title="{{ $registro->nome }}">{{ $registro->nome }}</span>
